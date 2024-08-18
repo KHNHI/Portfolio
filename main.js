@@ -70,21 +70,41 @@ contactForm.addEventListener("submit", sendEmail);
 function scrollHeader() {
   const header = document.getElementById("header");
   //   when the scroll is greater than 80 viewport height, add the scroll-header class to header tag
-  if (this.scrollY >= 80) 
-    header.classList.add("scroll-header");
-   else 
-    header.classList.remove("scroll-header");
-  
+  if (this.scrollY >= 80) header.classList.add("scroll-header");
+  else header.classList.remove("scroll-header");
 }
 window.addEventListener("scroll", scrollHeader);
 // ===================Show scrollup===============
 function scrollUp() {
-    const scrollUp = document.getElementById("scroll-up");
-    //   when the scroll is greater than 350 viewport height, add the show-scroll class to scroll-top class
-    if (this.scrollY >= 350) 
-      scrollUp.classList.add("show-scroll");
-     else 
-      scrollUp.classList.remove("show-scroll");
-    
-  }
-  window.addEventListener("scroll", scrollUp);
+  const scrollUp = document.getElementById("scroll-up");
+  //   when the scroll is greater than 350 viewport height, add the show-scroll class to scroll-top class
+  if (this.scrollY >= 350) scrollUp.classList.add("show-scroll");
+  else scrollUp.classList.remove("show-scroll");
+}
+window.addEventListener("scroll", scrollUp);
+// =================Show menu=================
+const navMenu = document.getElementById("nav-menu");
+const navToggle = document.getElementById("nav-toggle");
+const navClose = document.getElementById("nav-close");
+// =================Menu show===============
+// validate if constant exists
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.add("show-menu");
+  });
+}
+// Menu hidden
+// validate if constant exists
+if (navClose) {
+  navClose.addEventListener("click", () => {
+    navMenu.classList.remove("show-menu");
+  });
+}
+// =================Remove menu mobile=======
+const navLink = document.querySelectorAll(".nav__link");
+function linkAction() {
+  const navMenu = document.getElementById("nav-menu");
+  // when we click on each nav__link, we remove the show-menu class
+  navMenu.classList.remove("show-menu");
+}
+navLink.forEach((link) => link.addEventListener("click", linkAction));
